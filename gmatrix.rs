@@ -7,6 +7,14 @@ impl Gmatrix {
 		Gmatrix { data: ret }
 	}
 
+	pub fn copy_into(&self, o: &mut Gmatrix) {
+		for i in 0..self.rlen() {
+			for j in 0..self.clen() {
+				o.set_val(i,j,self.get_val(i,j));
+			}
+		}
+	}
+
 	pub fn identity(&self) -> Gmatrix {
 		let mut ret = Gmatrix::new();
 		for i in 0..self.rlen() {
@@ -82,6 +90,7 @@ impl Gmatrix {
 		o.data = self.m_mult(o).data;
 	}
 
+	#[allow(dead_code)]
 	pub fn clear(&mut self) {
 		for r in 0..self.rlen() {
 			for c in 0..self.clen() {
