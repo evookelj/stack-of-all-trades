@@ -152,6 +152,9 @@ pub fn parse_file(name: &str, transf: &mut Gmatrix, edges: &mut Gmatrix, screen:
 					let to_copy = stack[stack.len()-1];
 					stack.push(to_copy);
 				}
+				"pop" => {
+					stack.pop();
+				}
 				"ident" => {
 					let g = edges.identity();
 					for i in 0..g.rlen() {
