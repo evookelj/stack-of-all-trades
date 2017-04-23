@@ -1,7 +1,7 @@
 #test box mesh
-push
 box
 0 0 0 200 100 400
+display
 ident
 rotate
 x 20

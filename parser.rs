@@ -140,7 +140,7 @@ pub fn parse_file(name: &str) {
 					);
 				stack[stack_lpos].edit_mult(&mut tris);
 				tris.print();
-				draw_tris(&mut tris, &mut screen, [0,0 0]);
+				draw_tris(&mut tris, &mut screen, [0,0,0]);
 				last = String::from("");
 			}
 			"sphere" => {
