@@ -22,6 +22,8 @@ use draw::add_sphere;
 use draw::add_torus;
 
 pub fn parse_file(name: &str, transf: &mut Gmatrix, edges: &mut Gmatrix, screen: &mut [[[u32; 3]; 500]; 500]) {
+	let mut stack: Vec<[[f32; 4]; 4]> = Vec::new();
+	stack.push( [[1.0,0.0,0.0,0.0],[0.0,1.0,0.0,0.0],[0.0,0.0,1.0,0.0],[0.0,0.0,0.0,1.0]] ); //first comes I
 	let f = File::open(name).unwrap();
 	let file = BufReader::new(&f);
 	let mut last = String::from("");
@@ -146,6 +148,10 @@ pub fn parse_file(name: &str, transf: &mut Gmatrix, edges: &mut Gmatrix, screen:
 			}
  			_ => {
 				match l.trim() {
+				"push" => {
+					let to_copy = stack[stack.len()-1];
+					stack.push(to_copy);
+				}
 				"ident" => {
 					let g = edges.identity();
 					for i in 0..g.rlen() {
