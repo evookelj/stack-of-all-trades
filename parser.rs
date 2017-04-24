@@ -23,7 +23,7 @@ use draw::add_torus;
 
 pub fn parse_file(name: &str) {
 	let mut screen = [[[255; 3]; 500]; 500];
-	let mut transf = Gmatrix::new().identity();
+	//let mut transf = Gmatrix::new().identity();
 	let mut stack: Vec<Gmatrix> = Vec::new();
 	stack.push(Gmatrix::new().identity()); //first comes I
 	let f = File::open(name).unwrap();
@@ -139,7 +139,6 @@ pub fn parse_file(name: &str) {
 					vec[5].parse().unwrap() //depth
 					);
 				stack[stack_lpos].edit_mult(&mut tris);
-				tris.print();
 				draw_tris(&mut tris, &mut screen, [0,0,0]);
 				last = String::from("");
 			}
@@ -181,16 +180,18 @@ pub fn parse_file(name: &str) {
 					stack.pop();
 				}
 				"ident" => {
+					/*
 					let g = Gmatrix::new().identity();
 					for i in 0..g.rlen() {
 						for c in 0..g.clen() {
 							transf.set_val(i,c,g.get_val(i,c));
 						}
-					}
+					}*/
+					1+1;
 				}
 				"apply" => {
 					//transf.edit_mult(edges);
-					let x = 1+1;
+					1+1;
 				}
 				"display" => {
 					// draw_lines(edges, screen, [255,50,50]);
