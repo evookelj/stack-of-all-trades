@@ -15,6 +15,7 @@ use display::clear_screen;
 use display::save_ppm;
 
 use draw::draw_tris;
+use draw::draw_lines;
 use draw::add_curve;
 use draw::add_circle;
 use draw::add_box;
@@ -54,6 +55,7 @@ pub fn parse_file(name: &str) {
  					vec[4].parse().unwrap(),
  					vec[5].parse().unwrap());
  				stack[stack_lpos].edit_mult(&mut edges);
+ 				draw_lines(&mut edges, &mut screen, [0,0,0]);
  				last = String::from("");
 			}
 			"scale" => {
@@ -96,6 +98,7 @@ pub fn parse_file(name: &str) {
 					vec[2].parse().unwrap(),
 					vec[3].parse().unwrap());
 				stack[stack_lpos].edit_mult(&mut edges);
+				draw_lines(&mut edges, &mut screen, [0,0,0]);
 				last = String::from("");
 			}
 			"hermite" => {
@@ -111,6 +114,7 @@ pub fn parse_file(name: &str) {
 					vec[7].parse().unwrap(), //ry1
 					"h");
 				stack[stack_lpos].edit_mult(&mut edges);
+				draw_lines(&mut edges, &mut screen, [0,0,0]);
 				last = String::from("");
 			}
 			"bezier" => {
@@ -126,6 +130,7 @@ pub fn parse_file(name: &str) {
 					vec[7].parse().unwrap(),
 					"b");
 				stack[stack_lpos].edit_mult(&mut edges);
+				draw_lines(&mut edges, &mut screen, [0,0,0]);
 				last = String::from("");
 			}
 			"box" => {
