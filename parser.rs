@@ -68,7 +68,8 @@ pub fn parse_file(name: &str) {
 					vec[2].parse().unwrap()
 					);
 				//scale.edit_mult(transf);
-				scale.edit_mult(&mut stack[stack_lpos]);
+				//scale.edit_mult(&mut stack[stack_lpos]);
+				(&mut stack[stack_lpos]).opp_edit_mult(&scale);
 				last = String::from("");
 			}
 			"move" => {
@@ -77,8 +78,8 @@ pub fn parse_file(name: &str) {
 					vec[1].parse().unwrap(),
 					vec[2].parse().unwrap()
 				);
-				//trans.edit_mult(transf);
-				trans.edit_mult(&mut stack[stack_lpos]);
+				//trans.edit_mult(&mut stack[stack_lpos]);
+				(&mut stack[stack_lpos]).opp_edit_mult(&trans);
 				last = String::from("");
 			}
 			"rotate" => {
@@ -90,7 +91,8 @@ pub fn parse_file(name: &str) {
 					_ => ()
 				}
 				//rot.edit_mult(transf);
-				rot.edit_mult(&mut stack[stack_lpos]);
+				//rot.edit_mult(&mut stack[stack_lpos]);
+				(&mut stack[stack_lpos]).opp_edit_mult(&rot);
 				last = String::from("");
 			}
 			"circle" => {

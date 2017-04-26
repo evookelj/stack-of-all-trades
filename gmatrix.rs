@@ -90,6 +90,10 @@ impl Gmatrix {
 		o.data = self.m_mult(o).data;
 	}
 
+	pub fn opp_edit_mult(&mut self, o: &Gmatrix) {
+		self.data = self.m_mult(o).data
+	}
+
 	#[allow(dead_code)]
 	pub fn clear(&mut self) {
 		for r in 0..self.rlen() {
