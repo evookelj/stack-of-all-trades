@@ -24,7 +24,8 @@ use draw::add_torus;
 
 pub fn parse_file(name: &str) {
 
-	let mario_yellow = [204, 204, 0];
+	let red = [0, 0, 0];
+	let black = [255,0,0];
 
 	let mut screen = [[[255; 3]; 500]; 500];
 	//let mut transf = Gmatrix::new().identity();
@@ -58,7 +59,7 @@ pub fn parse_file(name: &str) {
  					vec[4].parse().unwrap(),
  					vec[5].parse().unwrap());
  				stack[stack_lpos].edit_mult(&mut edges);
- 				draw_lines(&mut edges, &mut screen, mario_yellow);
+ 				draw_lines(&mut edges, &mut screen, black);
  				last = String::from("");
 			}
 			"scale" => {
@@ -103,7 +104,7 @@ pub fn parse_file(name: &str) {
 					vec[2].parse().unwrap(),
 					vec[3].parse().unwrap());
 				stack[stack_lpos].edit_mult(&mut edges);
-				draw_lines(&mut edges, &mut screen, mario_yellow);
+				draw_lines(&mut edges, &mut screen, black);
 				last = String::from("");
 			}
 			"hermite" => {
@@ -119,7 +120,7 @@ pub fn parse_file(name: &str) {
 					vec[7].parse().unwrap(), //ry1
 					"h");
 				stack[stack_lpos].edit_mult(&mut edges);
-				draw_lines(&mut edges, &mut screen, mario_yellow);
+				draw_lines(&mut edges, &mut screen, black);
 				last = String::from("");
 			}
 			"bezier" => {
@@ -135,7 +136,7 @@ pub fn parse_file(name: &str) {
 					vec[7].parse().unwrap(),
 					"b");
 				stack[stack_lpos].edit_mult(&mut edges);
-				draw_lines(&mut edges, &mut screen, mario_yellow);
+				draw_lines(&mut edges, &mut screen, black);
 				last = String::from("");
 			}
 			"box" => {
@@ -149,7 +150,7 @@ pub fn parse_file(name: &str) {
 					vec[5].parse().unwrap() //depth
 					);
 				stack[stack_lpos].edit_mult(&mut tris);
-				draw_tris(&mut tris, &mut screen, mario_yellow);
+				draw_tris(&mut tris, &mut screen, red);
 				last = String::from("");
 			}
 			"sphere" => {
@@ -162,7 +163,7 @@ pub fn parse_file(name: &str) {
 					0.05
 					); //r
 				stack[stack_lpos].edit_mult(&mut tris);
-				draw_tris(&mut tris, &mut screen, mario_yellow);
+				draw_tris(&mut tris, &mut screen, red);
 				last = String::from("");
 			}
 			"torus" => {
@@ -176,7 +177,7 @@ pub fn parse_file(name: &str) {
 					0.05
 					);
 				stack[stack_lpos].edit_mult(&mut tris);
-				draw_tris(&mut tris, &mut screen, mario_yellow);
+				draw_tris(&mut tris, &mut screen, red);
 				last = String::from("");
 			}
  			_ => {
